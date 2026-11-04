@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Roblox 2016 Xbox
+Comment=Rust reimplementation of the 2016 Roblox Xbox shell
+Exec=roblox-2016-xbox
+TryExec=roblox-2016-xbox
+Icon=roblox-2016-xbox
+Terminal=false
+Categories=Game;
+StartupWMClass=roblox-2016-xbox

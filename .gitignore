@@ -1,0 +1,24 @@
+# Rust build output
+/target/
+**/*.rs.bk
+
+# Local 2016 media, not redistributed with the project
+/assets/background/
+/assets/music/
+/assets/sounds/*.mp3
+/assets/sounds/legacy-pc/
+
+# Local reference comparison frames
+/docs/screenshots/compare/
+
+# Signed-in account captures
+/docs/screenshots/account/
+
+# Logs and editor noise
+*.log
+.DS_Store
+*.swp
+*~
+.opencode/
+target/
+.env
