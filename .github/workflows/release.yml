@@ -55,4 +55,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: release/roblox-2016-xbox-*-x86_64-linux.tar.gz
-          generate_release_notes: true
+          name: ${{ github.ref_name }}
+          body: ${{ github.ref_name }}
