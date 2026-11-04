@@ -157,15 +157,14 @@ packaging/           desktop entry and icons
 |---|---|
 | ![Games screen](docs/screenshots/games.png) | ![Search screen](docs/screenshots/search.png) |
 
-| Details | Joined |
-|---|---|
-| ![Game details](docs/screenshots/details.png) | ![Joined game](docs/screenshots/launch.png) |
+| Details |
+|---|
+| ![Game details](docs/screenshots/details.png) |
 
 More screenshots are in [`docs/screenshots/`](docs/screenshots/README.md), including sign-in, settings, and launch failure states.
 
 ## Documentation
 
-- [`PLAN.md`](PLAN.md): master plan, phase gates, risks, and decisions.
 - [`docs/backend.md`](docs/backend.md): authentication, session, catalog APIs, and the Sober launch contract.
 - [`docs/ui-reference.md`](docs/ui-reference.md): 2016 screen specifications, design tokens, and controller mapping.
 - [`docs/fidelity-pass.md`](docs/fidelity-pass.md): measured title, sign-in, home, and avatar layouts.

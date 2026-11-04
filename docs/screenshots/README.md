@@ -1,14 +1,14 @@
 # Screenshots
 
-These images were captured from the Rust shell on 2026-11-03 at 1280x720 logical size (1504x846 physical under Xvfb at KDE's 1.175 scale). The title, sign-in, home, games, details, and audio captures use the local 2016 background recording so the measured 2016 layout can be compared; that recording is not in the app bundle. See [`../fidelity-pass.md`](../fidelity-pass.md) and [`../ui-audio-pass-2026-11-03.md`](../ui-audio-pass-2026-11-03.md).
+These images were captured from the Rust shell. The games, search, and details images were refreshed on 2026-11-04 at 1600x900; the remaining images were captured on 2026-11-03 at 1504x846. The title, sign-in, home, games, search, details, and audio captures use the local 2016 background recording so the measured 2016 layout can be compared; that recording is not in the app bundle. See [`../fidelity-pass.md`](../fidelity-pass.md) and [`../ui-audio-pass-2026-11-03.md`](../ui-audio-pass-2026-11-03.md).
 
 - `title.png`: boot/title with the 2016 wordmark, measured 50 px tagline, video background, and the press-any-button prompt.
 - `signin.png`: sign-in choice with the video background, WebView sign-in, read-only Sober import, guest browsing, and Create Account.
 - `webview-login.png`: the real Roblox login page in the isolated WebKitGTK helper.
 - `home.png`: live 4×2 square-tile featured grid, focused avatar card, guest avatar, and honest friend empty state. Signed-in sessions use an upper-body avatar crop.
-- `games.png`: three live square-tile sort carousels with the 2016 overflow buttons.
-- `search.png`: live search results for "natural disaster".
-- `details.png`: live details for Natural Disaster Survival with a square game icon and the measured media column.
+- `games.png`: live square-tile sort carousels with the 2016 overflow buttons.
+- `search.png`: live search results for "Adopt Me".
+- `details.png`: live details for Bug Evolution by Corgi Crew, with a square game icon and the measured media column.
 - `launch.png`: real Joined state for Natural Disaster Survival (`189707`) after Search → Details → Play on the final release binary.
 - `launch-dontsplash.png`: real Joined state for the first featured game, DONT SPLASH, from Home → Details → Play on the final release binary.
 - `launch-failed.png`: honest Launch failed state, captured while another game had exhausted VRAM. It shows crash detection and the Retry / Open Sober / Back actions.
