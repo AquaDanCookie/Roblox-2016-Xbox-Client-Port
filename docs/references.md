@@ -1,6 +1,6 @@
 # Reference Index
 
-This file records where the 2016 UI/behavior references came from. The captures are **not** part of the project and must not be redistributed.
+This file records where the 2016 UI/behavior references came from. The captures are **not** part of the project and must not be redistributed. The 2016 Xbox platform shim itself is also not included; paths beginning with `XboxClient/` refer to the local reference copy used during analysis.
 
 ## 2016 UI / behavior
 
@@ -13,7 +13,7 @@ This file records where the 2016 UI/behavior references came from. The captures 
 | 2025 2016-UI recreation | <https://www.youtube.com/watch?v=u6Sc53ztspQ> | Secondary cross-check only, not source of truth |
 | Xbox UI Launcher trailer | <https://www.youtube.com/watch?v=nD_OScrernE> | Secondary cross-check only, not source of truth |
 | Additional local captures | `/tmp/opencode/refs/xboxui_*.webm` | Local reference only; source URLs were not recorded |
-| 2016 source tree | `XboxClient/` | Platform shim; auth/controller/protocol behavior |
+| 2016 source tree | Local reference, not included | Platform shim; auth/controller/protocol behavior |
 | 2016 upstream content | <https://github.com/Julien-Rodot/Roblox-2016-> | `content/fonts`, `content/ui` textures, and CoreScripts used for font and UI analysis |
 | 2016 Source Sans Pro | `assets/fonts/` | Bundled under the SIL OFL 1.1; copied from the 2016 source |
 | 2016 intro place name | `XboxClient/XboxService.cpp` | `kIntroPlace = "rbxasset://ScaledWorldv4.7.rbxl"`; the actual intro place is not in the tree |

@@ -3,6 +3,9 @@ set -euo pipefail
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 binary="$root/target/release/roblox-2016-xbox"
+if [[ ! -x "$binary" && -x "$root/roblox-2016-xbox" ]]; then
+    binary="$root/roblox-2016-xbox"
+fi
 bin_dir="${HOME}/.local/bin"
 applications_dir="${HOME}/.local/share/applications"
 icon_file="${HOME}/.local/share/icons/roblox-2016-xbox.png"

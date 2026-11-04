@@ -182,7 +182,7 @@ fn main() -> eframe::Result<()> {
             .with_maximized(start_maximized)
             .with_app_id(app_id)
             .with_icon(Arc::new(load_icon(include_bytes!(
-                "../XboxClient/img/logo208.png"
+                "../packaging/icons/208x208.png"
             )))),
         renderer: eframe::Renderer::Wgpu,
         persist_window: args.screenshot.is_none(),

@@ -146,7 +146,6 @@ src/
   theme.rs           fonts, colors, and shared styles
   screens/           one module per screen
 assets/              fonts, generated sounds, and the 2016 wordmark
-XboxClient/          2016 Xbox platform shim used as a behavior reference
 docs/                design notes, API notes, phase reports, and screenshots
 packaging/           desktop entry and icons
 ```
@@ -182,7 +181,7 @@ The unit tests cover launch URI construction, join marker matching, wrong-place 
 
 ## Known limitations
 
-- The 2016 shell and its assets were not in the provided `XboxClient` tree, so the interface is a reconstruction from reference captures, not a decompilation or a C++ port. Layout and behavior are close, but not pixel-identical on every display.
+- The 2016 shell and its assets were not available during development, so the interface is a reconstruction from reference captures, not a decompilation or a C++ port. Layout and behavior are close, but not pixel-identical on every display.
 - Game execution depends on Sober. The shell does not render Roblox itself and does not implement the retired 2016 Xbox Live backend.
 - The original 2016 video, menu theme, UI sound recordings, game thumbnails, and reference captures are copyrighted. They are not covered by the project's source license. The local media copies used during development are excluded from the repository. The fallback scene is generated, not the original 3D scene.
 - Gamepad support is implemented but has not been tested on physical hardware.
@@ -194,7 +193,7 @@ The unit tests cover launch URI construction, join marker matching, wrong-place 
 
 Roblox 2016 Xbox Client is an unofficial fan project. It is not affiliated with, endorsed by, or supported by Roblox Corporation. Roblox and the Roblox logo are trademarks of Roblox Corporation.
 
-`XboxClient/` contains the 2016 Xbox platform shim that informed this work. Its source, the Roblox logo files, game thumbnails, reference captures, 2016 video, menu theme, and UI sound recordings remain the property of their respective owners. They are not covered by this project's source license. If you republish this project, check that you have the right to redistribute that tree and the logo files. The `.gitignore` excludes the local media copies used during development, but screenshots still show game thumbnails and the Roblox wordmark.
+The Roblox logo files, game thumbnails, reference captures, 2016 video, menu theme, and UI sound recordings remain the property of their respective owners. They are not covered by this project's source license. The `.gitignore` excludes the local media copies used during development, but screenshots still show game thumbnails and the Roblox wordmark.
 
 Nothing in this project bypasses anti-cheat, DRM, or account security. The app uses Roblox's public web APIs, an ephemeral WebKitGTK login window, and Sober's documented launch URI.
 
@@ -208,4 +207,4 @@ Nothing in this project bypasses anti-cheat, DRM, or account security. The app u
 
 ## License
 
-The Rust source code is dual-licensed under the MIT License or the Apache License 2.0, at your option. This matches the `license` field in `Cargo.toml`. The `XboxClient/` reference tree, Roblox trademarks, and third-party media are excluded from that license.
+The Rust source code is dual-licensed under the MIT License or the Apache License 2.0, at your option. This matches the `license` field in `Cargo.toml`. Roblox trademarks and third-party media are excluded from that license.
