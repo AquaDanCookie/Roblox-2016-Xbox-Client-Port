@@ -2,7 +2,7 @@
 
 A native Linux reconstruction of the 2016 Roblox Xbox One console shell, written in Rust. It signs in to a real Roblox account, reads live catalog and social data from Roblox's public APIs, and launches real experiences through [Sober](https://vinegarhq.org/Sober/), the Android-compatible Roblox runtime for Linux.
 
-![Title screen](docs/screenshots/title.png)
+![Title screen](screenshots/title.png)
 
 **Status:** working prototype. Sign-in, browsing, search, and the full launch flow have been verified end to end on the release build. See [Known limitations](#known-limitations).
 
@@ -146,7 +146,7 @@ src/
   theme.rs           fonts, colors, and shared styles
   screens/           one module per screen
 assets/              fonts, generated sounds, and the 2016 wordmark
-docs/                design notes, API notes, phase reports, and screenshots
+screenshots/         README screenshots
 packaging/           desktop entry and icons
 ```
 
@@ -154,22 +154,11 @@ packaging/           desktop entry and icons
 
 | Games | Search |
 |---|---|
-| ![Games screen](docs/screenshots/games.png) | ![Search screen](docs/screenshots/search.png) |
+| ![Games screen](screenshots/games.png) | ![Search screen](screenshots/search.png) |
 
 | Details |
 |---|
-| ![Game details](docs/screenshots/details.png) |
-
-More screenshots are in [`docs/screenshots/`](docs/screenshots/README.md), including sign-in, settings, and launch failure states.
-
-## Documentation
-
-- [`docs/backend.md`](docs/backend.md): authentication, session, catalog APIs, and the Sober launch contract.
-- [`docs/ui-reference.md`](docs/ui-reference.md): 2016 screen specifications, design tokens, and controller mapping.
-- [`docs/fidelity-pass.md`](docs/fidelity-pass.md): measured title, sign-in, home, and avatar layouts.
-- [`docs/ui-audio-pass-2026-11-03.md`](docs/ui-audio-pass-2026-11-03.md): layout and audio verification pass.
-- [`docs/phase-0-recon.md`](docs/phase-0-recon.md) through [`docs/phase-4-report.md`](docs/phase-4-report.md): recon evidence and phase reports.
-- [`docs/references.md`](docs/references.md): source and attribution index.
+| ![Game details](screenshots/details.png) |
 
 ## Tests
 
@@ -203,7 +192,6 @@ Nothing in this project bypasses anti-cheat, DRM, or account security. The app u
 - The [egui](https://github.com/emilk/egui), [eframe](https://github.com/emilk/egui/tree/master/crates/eframe), [wgpu](https://github.com/gfx-rs/wgpu), [rodio](https://github.com/RustAudio/rodio), and [gilrs](https://gitlab.com/gilrs-project/gilrs) projects.
 - Source Sans Pro, bundled under the SIL Open Font License 1.1. The license text is in [`assets/fonts/OFL.txt`](assets/fonts/OFL.txt).
 - TreeNinjaPRO and Rawblocky's `RobloxXbox-Deck-Soundpack` for the Xbox menu sound reference. The recordings are not bundled.
-- The 2016 UI and gameplay references listed in [`docs/references.md`](docs/references.md).
 
 ## License
 

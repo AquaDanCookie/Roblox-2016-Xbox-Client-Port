@@ -11,11 +11,8 @@
 /assets/sounds/*.mp3
 /assets/sounds/legacy-pc/
 
-# Local reference comparison frames
-/docs/screenshots/compare/
-
-# Signed-in account captures
-/docs/screenshots/account/
+# Local development notes and reference captures
+/docs/
 
 # Logs and editor noise
 *.log
