@@ -400,7 +400,7 @@ pub fn button(
             fill.gamma_multiply(0.45)
         };
         canvas.rect_filled(rect, 0, fill);
-        if response.focused {
+        if response.focused || (response.hovered && enabled && !canvas.hover_enabled) {
             canvas.focus_ring(rect, 0);
         } else if canvas.hover_enabled && response.hovered && enabled {
             canvas.rect_stroke(rect, 0, Stroke::new(1.0, Color32::from_white_alpha(80)));

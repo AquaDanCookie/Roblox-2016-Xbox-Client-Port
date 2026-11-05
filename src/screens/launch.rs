@@ -126,7 +126,7 @@ impl App {
                     canvas,
                     "launch:cancel",
                     primary,
-                    "Cancel wait",
+                    "Cancel",
                     ButtonKind::Secondary,
                     true,
                 ) {

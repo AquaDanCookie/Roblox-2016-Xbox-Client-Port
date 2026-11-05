@@ -1,6 +1,6 @@
 [package]
 name = "roblox-2016-xbox"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.95"
 description = "Rust reimplementation of the 2016 Roblox Xbox One shell"
