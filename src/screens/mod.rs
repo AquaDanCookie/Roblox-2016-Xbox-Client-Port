@@ -405,10 +405,17 @@ pub fn button(
         } else if canvas.hover_enabled && response.hovered && enabled {
             canvas.rect_stroke(rect, 0, Stroke::new(1.0, Color32::from_white_alpha(80)));
         }
+        let text = label.to_uppercase();
+        let max_width = (rect.width() - 24.0).max(1.0);
+        let mut text_size = 32.0;
+        let text_width = canvas.text_width(&text, text_size, false);
+        if text_width > max_width {
+            text_size = (text_size * max_width / text_width).max(18.0);
+        }
         canvas.text_centered(
             rect,
-            label.to_uppercase(),
-            32.0,
+            text,
+            text_size,
             if enabled {
                 text_color
             } else {

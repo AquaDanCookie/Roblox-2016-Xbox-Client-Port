@@ -261,6 +261,17 @@ impl<'a> Canvas<'a> {
         painter.galley(self.pos(pos.x, pos.y), galley, color);
     }
 
+    /// Draws a laid-out block centred horizontally and vertically in `rect`.
+    pub fn galley_centered_clipped(&self, rect: Rect, galley: Arc<Galley>, color: Color32) {
+        let width = galley.size().x / self.scale;
+        let height = galley.size().y / self.scale;
+        let pos = Pos2::new(
+            rect.center().x - width * 0.5,
+            rect.center().y - height * 0.5,
+        );
+        self.galley_clipped(pos, galley, color, rect);
+    }
+
     pub fn rect_filled(&self, rect: Rect, radius: u8, color: Color32) {
         self.painter
             .rect_filled(self.screen_rect(rect), self.corner(radius), color);

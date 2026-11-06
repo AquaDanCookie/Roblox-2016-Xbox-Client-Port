@@ -93,12 +93,7 @@ impl App {
             Vec2::new(panel.width() - 120.0, 60.0),
         );
         let galley = canvas.wrapped(subtitle_rect, &subtitle, 18.0, theme::TEXT_SECONDARY, false);
-        canvas.galley_clipped(
-            subtitle_rect.min,
-            galley,
-            theme::TEXT_SECONDARY,
-            subtitle_rect,
-        );
+        canvas.galley_centered_clipped(subtitle_rect, galley, theme::TEXT_SECONDARY);
 
         if let Some(path) = &self.launch.log_path
             && matches!(phase, LaunchPhase::Failed | LaunchPhase::Waiting)
@@ -117,6 +112,7 @@ impl App {
         }
 
         let primary = Rect::from_min_size(Pos2::new(540.0, 650.0), Vec2::new(220.0, 52.0));
+        let joined_primary = Rect::from_min_size(Pos2::new(540.0, 650.0), Vec2::new(320.0, 52.0));
         let secondary = Rect::from_min_size(Pos2::new(790.0, 650.0), Vec2::new(220.0, 52.0));
         let back = Rect::from_min_size(Pos2::new(1040.0, 650.0), Vec2::new(160.0, 52.0));
 
@@ -139,7 +135,7 @@ impl App {
                 if screens::button(
                     canvas,
                     "launch:return",
-                    primary,
+                    joined_primary,
                     "Return to shell",
                     ButtonKind::Secondary,
                     true,
