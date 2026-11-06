@@ -195,4 +195,4 @@ Nothing in this project bypasses anti-cheat, DRM, or account security. The app u
 
 ## License
 
-The Rust source code is dual-licensed under the MIT License or the Apache License 2.0, at your option. This matches the `license` field in `Cargo.toml`. Roblox trademarks and third-party media are excluded from that license.
+The Rust source code is dual-licensed under the MIT License or the Apache License 2.0, at your option. See [`LICENSE-MIT`](LICENSE-MIT) and [`LICENSE-APACHE`](LICENSE-APACHE). Roblox trademarks and third-party media are excluded from that license.

@@ -47,7 +47,7 @@ jobs:
           stage="roblox-2016-xbox-${version}"
           mkdir -p "release/${stage}"
           cp target/release/roblox-2016-xbox "release/${stage}/"
-          cp install.sh uninstall.sh README.md "release/${stage}/"
+          cp install.sh uninstall.sh README.md LICENSE-MIT LICENSE-APACHE "release/${stage}/"
           cp -r packaging "release/${stage}/"
           tar -C release -czf "release/roblox-2016-xbox-${version}-x86_64-linux.tar.gz" "${stage}"
 
