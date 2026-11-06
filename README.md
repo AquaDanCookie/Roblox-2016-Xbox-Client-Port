@@ -1,5 +1,9 @@
 # Roblox 2016 Xbox Client
 
+![Rust](https://emblem.xdan.cc/badge.svg?label=rust&message=1.95%2B&look=connected&labelColor=%233D3D3D&color=%234AA2D2)
+![Platform](https://emblem.xdan.cc/badge.svg?label=platform&message=Linux&look=connected&labelColor=%233D3D3D&color=%234AA2D2)
+![License](https://emblem.xdan.cc/badge.svg?label=license&message=MIT%20OR%20Apache-2.0&look=connected&labelColor=%233D3D3D&color=%234AA2D2)
+
 A native Linux reconstruction of the 2016 Roblox Xbox One console shell, written in Rust. It signs in to a real Roblox account, reads live catalog and social data from Roblox's public APIs, and launches real experiences through [Sober](https://vinegarhq.org/Sober/), the Android-compatible Roblox runtime for Linux.
 
 ![Title screen](screenshots/title.png)
