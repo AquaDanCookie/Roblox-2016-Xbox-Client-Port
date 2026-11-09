@@ -1,12 +1,28 @@
-# Roblox 2016 Xbox Client
+<p align="center">
+  <img src="packaging/icons/256x256.png" width="112" alt="Roblox 2016 Xbox Client icon">
+</p>
 
-![Rust](https://emblem.xdan.cc/badge.svg?label=rust&message=1.95%2B&look=connected&labelColor=%233D3D3D&color=%234AA2D2&icon=rust)
-![Platform](https://emblem.xdan.cc/badge.svg?label=platform&message=Linux&look=connected&labelColor=%233D3D3D&color=%234AA2D2&icon=linux)
-![License](https://emblem.xdan.cc/badge.svg?label=license&message=MIT%20OR%20Apache-2.0&look=connected&labelColor=%233D3D3D&color=%234AA2D2&icon=material-symbols:license)
+<h1 align="center">Roblox 2016 Xbox Client</h1>
 
-A native Linux reconstruction of the 2016 Roblox Xbox One console shell, written in Rust. It signs in to a real Roblox account, reads live catalog and social data from Roblox's public APIs, and launches real experiences through [Sober](https://vinegarhq.org/Sober/), the Android-compatible Roblox runtime for Linux.
+<p align="center">
+  A native Linux reconstruction of the 2016 Roblox Xbox One console shell,
+  written in Rust. It signs in to a real Roblox account, reads live catalog and
+  social data from Roblox's public APIs, and launches real experiences through
+  <a href="https://vinegarhq.org/Sober/">Sober</a>, the Android-compatible
+  Roblox runtime for Linux.
+</p>
 
-![Title screen](screenshots/title.png)
+<p align="center">
+  <img alt="Rust" src="https://emblem.xdan.cc/badge.svg?label=rust&amp;message=1.95%2B&amp;look=connected&amp;labelColor=%233D3D3D&amp;color=%234AA2D2&amp;icon=rust">
+  <img alt="Platform" src="https://emblem.xdan.cc/badge.svg?label=platform&amp;message=Linux&amp;look=connected&amp;labelColor=%233D3D3D&amp;color=%234AA2D2&amp;icon=linux">
+  <img alt="License" src="https://emblem.xdan.cc/badge.svg?label=license&amp;message=MIT%20OR%20Apache-2.0&amp;look=connected&amp;labelColor=%233D3D3D&amp;color=%234AA2D2&amp;icon=material-symbols:license">
+</p>
+
+<p align="center">
+  <img src="screenshots/title.png" alt="Title screen">
+</p>
+
+---
 
 **Status:** working prototype. Sign-in, browsing, search, and the full launch flow have been verified end to end on the release build. See [Known limitations](#known-limitations).
 
