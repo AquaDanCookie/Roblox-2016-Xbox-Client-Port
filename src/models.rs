@@ -308,6 +308,9 @@ impl Presence {
         if self.presence_type == 0 {
             return "Offline";
         }
+        if self.last_location.trim().eq_ignore_ascii_case("website") {
+            return "Online";
+        }
         if !self.last_location.is_empty() {
             &self.last_location
         } else {
@@ -410,6 +413,17 @@ mod tests {
         };
         assert_eq!(presence.label(), "Offline");
         assert!(!presence.is_online());
+    }
+
+    #[test]
+    fn online_website_location_reads_as_online() {
+        let presence = Presence {
+            presence_type: 1,
+            last_location: "Website".to_owned(),
+            ..Presence::default()
+        };
+        assert_eq!(presence.label(), "Online");
+        assert!(presence.is_online());
     }
 
     #[test]
