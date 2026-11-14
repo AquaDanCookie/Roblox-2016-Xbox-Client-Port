@@ -101,8 +101,37 @@ pub struct Paths {
     pub project_dir: PathBuf,
 }
 
+/// Locates the folder that contains the runtime `assets` directory.
+///
+/// Release builds ship `assets/` next to the binary. Development runs from
+/// `target/debug` or `target/release`, so the repository root is two levels up.
+/// The compile-time manifest path is only a last resort.
+fn runtime_project_dir() -> PathBuf {
+    if let Ok(executable) = std::env::current_exe() {
+        if let Some(exe_dir) = executable.parent() {
+            for candidate in [exe_dir.to_path_buf(), exe_dir.join("../..")] {
+                if candidate.join("assets").is_dir() {
+                    return candidate.canonicalize().unwrap_or(candidate);
+                }
+            }
+        }
+    }
+
+    if let Ok(current_dir) = std::env::current_dir() {
+        if current_dir.join("assets").is_dir() {
+            return current_dir;
+        }
+    }
+
+    std::env::current_exe()
+        .ok()
+        .and_then(|executable| executable.parent().map(Path::to_path_buf))
+        .unwrap_or_else(|| PathBuf::from("."))
+}
+
 impl Paths {
     pub fn new() -> Self {
+        let project_dir = runtime_project_dir();
         let project = directories::ProjectDirs::from("io", "local", "roblox-2016-xbox");
         if let Some(project) = project {
             return Self {
@@ -113,7 +142,7 @@ impl Paths {
                     .state_dir()
                     .map(std::path::Path::to_path_buf)
                     .unwrap_or_else(|| project.data_dir().to_path_buf()),
-                project_dir: PathBuf::from(env!("CARGO_MANIFEST_DIR")),
+                project_dir,
             };
         }
 
@@ -125,7 +154,7 @@ impl Paths {
             data_dir: home.join(".local/share/roblox-2016-xbox"),
             cache_dir: home.join(".cache/roblox-2016-xbox"),
             state_dir: home.join(".local/state/roblox-2016-xbox"),
-            project_dir: PathBuf::from(env!("CARGO_MANIFEST_DIR")),
+            project_dir,
         }
     }
 
@@ -262,9 +291,6 @@ impl Paths {
         for path in [
             self.config_dir.clone(),
             self.data_dir.clone(),
-            self.music_dir(),
-            self.sounds_dir(),
-            self.background_dir(),
             self.fallback_music_dir(),
             self.fallback_sounds_dir(),
             self.fallback_background_dir(),
@@ -285,4 +311,26 @@ pub fn open_path(path: &Path) -> Result<(), String> {
         .spawn()
         .map(|_| ())
         .map_err(|error| format!("could not open {}: {error}", path.display()))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::Paths;
+
+    #[test]
+    fn runtime_assets_are_found_next_to_the_project() {
+        let paths = Paths::new();
+        assert!(paths.project_assets_dir().join("music/menu.mp3").is_file());
+        assert!(
+            paths
+                .project_assets_dir()
+                .join("background/menu.mp4")
+                .is_file()
+        );
+
+        let music = paths.music_file().expect("bundled menu music");
+        assert!(music.starts_with(paths.project_assets_dir()));
+        let video = paths.background_video_file().expect("bundled background");
+        assert!(video.starts_with(paths.project_assets_dir()));
+    }
 }

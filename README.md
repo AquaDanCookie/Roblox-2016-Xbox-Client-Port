@@ -38,7 +38,7 @@ This is an unofficial fan project. It is not affiliated with, endorsed by, or su
 | Launch | Verified `roblox://` handoff to Sober, join confirmation from Sober's log, and honest crash and timeout states |
 | Social | Friends and presence, friend profiles, Add Friends, and Roblox platform chat |
 | Avatar | Inventory categories, platform outfits, and a full-body avatar render |
-| Media | User-supplied looping background video and menu music, a generated fallback scene, and embedded UI sounds |
+| Media | Bundled 2016 background video, menu music, and UI sounds, with user overrides and a generated fallback scene |
 | Input | Keyboard, mouse, and gamepad support through `gilrs` |
 | Operations | Single-instance lock, persistent app log, and a no-root install and uninstall |
 
@@ -95,7 +95,7 @@ During development, `cargo run --release` starts the same build.
 gtk-launch roblox-2016-xbox
 ```
 
-The script writes the binary to `~/.local/bin`, the desktop entry to `~/.local/share/applications`, and the icon at several hicolor sizes. It also refreshes the desktop and icon caches when those tools are available.
+The script writes the binary to `~/.local/bin`, the desktop entry to `~/.local/share/applications`, and the icon at several hicolor sizes. It also copies the bundled `assets/` media to `~/.local/share/roblox-2016-xbox/` so the installed launcher uses it. Existing media files are not overwritten. It refreshes the desktop and icon caches when those tools are available.
 
 To remove the app but keep user data, music, and background videos:
 
@@ -137,16 +137,17 @@ Session tokens are stored in the system Secret Service. If the Secret Service is
 
 ## Menu video and music
 
-The app does not ship the original 2016 background recording or soundtrack. It looks for your own files in these locations:
+The release bundles the 2016 background video, menu theme, and UI sounds in `assets/`. When you run the binary from the extracted folder, it uses those files directly. `install.sh` also copies them to `~/.local/share/roblox-2016-xbox/` for the desktop launcher. The app checks `assets/` first, then the user data folder.
 
-| Asset | Path | Accepted formats |
-|---|---|---|
-| Background video | `~/.local/share/roblox-2016-xbox/background/menu.mp4` | `mp4`, `webm`, `mkv`, `mov`; also `background.mp4` or the first video in the folder |
-| Menu music | `~/.local/share/roblox-2016-xbox/music/menu.mp3` | `mp3`, `wav`, `flac` |
+| Asset | Bundled path | User override | Accepted formats |
+|---|---|---|---|
+| Background video | `assets/background/menu.mp4` | `~/.local/share/roblox-2016-xbox/background/menu.mp4` | `mp4`, `webm`, `mkv`, `mov`; also `background.mp4` or the first video in the folder |
+| Menu music | `assets/music/menu.mp3` | `~/.local/share/roblox-2016-xbox/music/menu.mp3` | `mp3`, `wav`, `flac` |
+| UI sounds | `assets/sounds/*.mp3` | `~/.local/share/roblox-2016-xbox/sounds/*.mp3` | `mp3`, `wav`, `flac` |
 
-Settings > Video and Settings > Audio have buttons to open these folders and reload the files. Without them, the title and menus use a generated foggy scene and no music. The video is decoded at 960x540 and 30 fps with `ffmpeg`. The music is decoded once and looped from memory, fades in over 1.5 seconds, fades out over 0.8 seconds during a launch, and mutes when another window takes focus.
+Settings > Video and Settings > Audio have buttons to open the user folders and reload the files. If a file is missing, the title and menus use a generated foggy scene and no music. The video is decoded at 1920x1080 and 30 fps with `ffmpeg`. The music is decoded once and looped from memory, fades in over 1.5 seconds, fades out over 0.8 seconds during a launch, and mutes when another window takes focus.
 
-UI sounds are generated and embedded in the binary, so they work without any extra files. Settings > Audio has a toggle for them, and the app includes a reduced-motion option that disables the video.
+The bundled background is a recording of the 2016 scene, not the original real-time 3D scene. The generated fallback remains for reduced motion or missing files. If a bundled UI sound is missing, the app falls back to the generated sounds embedded in the binary. Settings > Audio has a toggle for UI sounds, and the app includes a reduced-motion option that disables the video.
 
 ## Project layout
 
@@ -165,7 +166,7 @@ src/
   instance.rs        single-instance lock
   theme.rs           fonts, colors, and shared styles
   screens/           one module per screen
-assets/              fonts, generated sounds, and the 2016 wordmark
+assets/              2016 background, music, sounds, fonts, and wordmark
 screenshots/         README screenshots
 packaging/           desktop entry and icons
 ```
@@ -192,7 +193,7 @@ The unit tests cover launch URI construction, join marker matching, wrong-place 
 
 - The 2016 shell and its assets were not available during development, so the interface is a reconstruction from reference captures, not a decompilation or a C++ port. Layout and behavior are close, but not pixel-identical on every display.
 - Game execution depends on Sober. The shell does not render Roblox itself and does not implement the retired 2016 Xbox Live backend.
-- The original 2016 video, menu theme, UI sound recordings, game thumbnails, and reference captures are copyrighted. They are not covered by the project's source license. The local media copies used during development are excluded from the repository. The fallback scene is generated, not the original 3D scene.
+- The bundled 2016 video, menu theme, UI sound recordings, game thumbnails, and reference captures are copyrighted. They remain the property of their respective owners and are not covered by the project's source license. The fallback scene is generated, not the original 3D scene.
 - Gamepad support is implemented but has not been tested on physical hardware.
 - Voice chat, Xbox Live party features, purchases, trades, and the 3D avatar editor are not implemented.
 - The project has been tested on one Linux setup (CachyOS, KDE Wayland, NVIDIA). Other compositors, GPUs, and distributions may need adjustments.
@@ -202,7 +203,7 @@ The unit tests cover launch URI construction, join marker matching, wrong-place 
 
 Roblox 2016 Xbox Client is an unofficial fan project. It is not affiliated with, endorsed by, or supported by Roblox Corporation. Roblox and the Roblox logo are trademarks of Roblox Corporation.
 
-The Roblox logo files, game thumbnails, reference captures, 2016 video, menu theme, and UI sound recordings remain the property of their respective owners. They are not covered by this project's source license. The `.gitignore` excludes the local media copies used during development, but screenshots still show game thumbnails and the Roblox wordmark.
+The bundled Roblox logo files, game thumbnails, reference captures, 2016 video, menu theme, and UI sound recordings remain the property of their respective owners. They are not covered by this project's source license. Check that you have the right to redistribute the bundled 2016 media before publishing a fork.
 
 Nothing in this project bypasses anti-cheat, DRM, or account security. The app uses Roblox's public web APIs, an ephemeral WebKitGTK login window, and Sober's documented launch URI.
 
@@ -211,7 +212,7 @@ Nothing in this project bypasses anti-cheat, DRM, or account security. The app u
 - [Sober](https://github.com/VinegarHQ/sober) and VinegarHQ for the Linux Roblox runtime.
 - The [egui](https://github.com/emilk/egui), [eframe](https://github.com/emilk/egui/tree/master/crates/eframe), [wgpu](https://github.com/gfx-rs/wgpu), [rodio](https://github.com/RustAudio/rodio), and [gilrs](https://gitlab.com/gilrs-project/gilrs) projects.
 - Source Sans Pro, bundled under the SIL Open Font License 1.1. The license text is in [`assets/fonts/OFL.txt`](assets/fonts/OFL.txt).
-- TreeNinjaPRO and Rawblocky's `RobloxXbox-Deck-Soundpack` for the Xbox menu sound reference. The recordings are not bundled.
+- TreeNinjaPRO and Rawblocky's `RobloxXbox-Deck-Soundpack` for the Xbox menu sound recordings bundled in `assets/sounds/`.
 
 ## License
 

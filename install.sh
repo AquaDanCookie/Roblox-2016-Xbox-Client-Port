@@ -10,6 +10,7 @@ bin_dir="${HOME}/.local/bin"
 applications_dir="${HOME}/.local/share/applications"
 icon_file="${HOME}/.local/share/icons/roblox-2016-xbox.png"
 icon_sizes=(16 24 32 48 64 128 208 256)
+data_dir="${HOME}/.local/share/roblox-2016-xbox"
 
 if [[ ! -x "$binary" ]]; then
     echo "Release binary not found at $binary" >&2
@@ -27,6 +28,16 @@ for size in "${icon_sizes[@]}"; do
 done
 sed -i "s|^Icon=.*|Icon=${icon_file}|" "$applications_dir/roblox-2016-xbox.desktop"
 
+if [[ -d "$root/assets" ]]; then
+    install -d "$data_dir"
+    for category in music sounds background; do
+        if [[ -d "$root/assets/$category" ]]; then
+            install -d "$data_dir/$category"
+            cp -an "$root/assets/$category/." "$data_dir/$category/"
+        fi
+    done
+fi
+
 if command -v update-desktop-database >/dev/null 2>&1; then
     update-desktop-database "$applications_dir" >/dev/null 2>&1 || true
 fi
@@ -42,6 +53,9 @@ echo "  $bin_dir/roblox-2016-xbox"
 echo "  $applications_dir/roblox-2016-xbox.desktop"
 echo "  $icon_file"
 echo "  hicolor app icons: ${icon_sizes[*]}"
+if [[ -d "$root/assets" ]]; then
+    echo "  media assets: $data_dir"
+fi
 echo
 echo "If the launcher does not appear, make sure ~/.local/bin is in PATH."
 echo "User data, music, and background videos are kept in ~/.local/share/roblox-2016-xbox."

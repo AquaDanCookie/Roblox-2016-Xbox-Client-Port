@@ -5,12 +5,6 @@
 # Local-only 2016 Xbox platform shim reference
 /XboxClient/
 
-# Local 2016 media, not redistributed with the project
-/assets/background/
-/assets/music/
-/assets/sounds/*.mp3
-/assets/sounds/legacy-pc/
-
 # Local development notes and reference captures
 /docs/
 
